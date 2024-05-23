@@ -6,6 +6,12 @@ Welcome to the KitLab repository! This kit provides everything you need to get s
 
 ---
 
+## 🔗 Drivers
+```
+https://dl.espressif.com/dl/package_esp32_index.json
+https://raw.githubusercontent.com/espressif/arduino-esp32/gh-pages/package_esp32_index.json
+```
+
 ## 📦 Contents of the Kit
 
 - **ESP32 Development Board**: The brain of the robot.
