@@ -3,7 +3,7 @@
 #include <DabbleESP32.h>
 
 //Right motor
-int enableRightMotor=33; 
+int enableRightMotor=25; 
 int rightMotorPin1=13;
 int rightMotorPin2=14;
 //Left motor
