@@ -16,6 +16,10 @@ const int MAX_MOTOR_SPEED = 200;
 
 // Function to control motors
 void controlMotors(int leftSpeed, int rightSpeed) {
+  // Constrain speeds to max limits
+  leftSpeed = constrain(leftSpeed, -MAX_MOTOR_SPEED, MAX_MOTOR_SPEED);
+  rightSpeed = constrain(rightSpeed, -MAX_MOTOR_SPEED, MAX_MOTOR_SPEED);
+
   // Control left motor direction
   if (leftSpeed > 0) {
     digitalWrite(LEFT1, HIGH);
@@ -41,8 +45,8 @@ void controlMotors(int leftSpeed, int rightSpeed) {
   }
 
   // Set motor speeds
-  ledcWrite(0, abs(leftSpeed));
-  ledcWrite(1, abs(rightSpeed));
+  ledcWrite(PWM_LEFT, abs(leftSpeed));
+  ledcWrite(PWM_RIGHT, abs(rightSpeed));
 }
 
 void setup() {
@@ -57,10 +61,8 @@ void setup() {
   pinMode(START_BUTTON, INPUT_PULLUP);
 
   // Set up PWM channels
-  ledcSetup(0, PWMFreq, PWMResolution);
-  ledcSetup(1, PWMFreq, PWMResolution);
-  ledcAttachPin(PWM_LEFT, 0);
-  ledcAttachPin(PWM_RIGHT, 1);
+  ledcAttach(PWM_LEFT, PWMFreq, PWMResolution);
+  ledcAttach(PWM_RIGHT, PWMFreq, PWMResolution);
 }
 
 void loop() {
